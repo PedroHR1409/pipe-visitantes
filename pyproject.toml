@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "pipe-visitantes"
+version = "0.1.0"
+description = ""
+authors = ["Pedro <pedro.h.roque14@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pandas = "^2.2.3"
+selenium = "^4.28.1"
+boto3 = "^1.36.21"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
