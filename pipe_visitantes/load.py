@@ -15,6 +15,10 @@ class S3Uploader:
         """
         Faz o upload de um arquivo para o S3, organizando em pastas de ano/mês/dia.
         """
+        if not os.path.exists(file_path):
+            logger.error(f'O arquivo {file_path} não foi encontrado para upload.')
+            return
+        
         now = datetime.now()
         timestamp = now.strftime('%Y%m%d_%H%M%S')
         date_prefix = f'{now.year}/{now.strftime("%m")}/{now.strftime("%d")}/'
@@ -23,7 +27,10 @@ class S3Uploader:
         s3_key = f'{s3_prefix}{date_prefix}{timestamp}_{file_name}'.replace('\\', '/')
 
         try:
+            # Upload do arquivo para o S3
             self.s3_client.upload_file(file_path, self.bucket_name, s3_key)
             logger.info(f'Upload concluído: {file_path} → s3://{self.bucket_name}/{s3_key}')
+        except FileNotFoundError:
+            logger.error(f'Arquivo não encontrado: {file_path}')
         except Exception as e:
             logger.error(f'Erro no upload: {e}')

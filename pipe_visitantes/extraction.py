@@ -59,7 +59,7 @@ class WebScraper:
     def extract_members(self, data, folder_to_save):
         try:
             logger.info(f'Aguardando carregamento da página...')
-            wait = WebDriverWait(self.driver, 15)
+            wait = WebDriverWait(self.driver, 10)
 
             # Espera o botão "Relatórios" estar visível e clica nele
             relatorio_field = wait.until(EC.element_to_be_clickable((By.ID, 'ctl00_liRelat')))
