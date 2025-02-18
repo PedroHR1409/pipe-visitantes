@@ -1,0 +1,5 @@
+python-dotenv
+pandas
+boto3
+selenium
+requests
