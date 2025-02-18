@@ -19,9 +19,9 @@ O pipeline é dividido nas seguintes etapas:
 
 Antes de rodar o projeto, instale as dependências utilizando o pip:
 
-bash
+```bash
 pip install -r requirements.txt
-
+```
 
 As principais dependências são:
 
@@ -32,18 +32,19 @@ As principais dependências são:
 
 ## Variáveis de Ambiente
 
-Este projeto requer um arquivo .env para armazenar variáveis de ambiente necessárias para a execução:
+Este projeto requer um arquivo `.env` para armazenar variáveis de ambiente necessárias para a execução:
 
-.env
+```.env
 URL='https://www.cadastrodeclientesonline.com.br/login.aspx'
 EMAIL='seu_email@example.com'
 SENHA='sua_senha'
 FILE_PATH='files'
+```
 
 
 ## Como Rodar o Projeto
 
-1. **Configuração Inicial:** Certifique-se de que o arquivo .env esteja configurado com as variáveis de ambiente corretas.
+1. **Configuração Inicial:** Certifique-se de que o arquivo `.env` esteja configurado com as variáveis de ambiente corretas.
 
 2. **Executando o Pipeline:** O pipeline pode ser executado com o seguinte comando:
 
@@ -56,6 +57,8 @@ Esse comando vai:
 * Logar na página de relatórios.
 * Extrair os dados de clientes e follow-ups.
 * Realizar a transformação dos dados.
-* Fazer o upload dos dados para o AWS S3.
+* Fazer o upload dos dados da camada bronze para o AWS S3.
+* Tratar os dados e fazer upload da camada silver no AWS S3.
+* Adicionar metadado e fazer upload da camada gold no AWS S3.
 
-3. **Visualizando os Resultados:** Após a execução, o arquivo visitantes.xlsx será gerado com os dados transformados e salvo na pasta files/.
+3. **Visualizando os Resultados:** Após a execução, o arquivo `visitantes_gold.csv` será gerado com os dados transformados e salvo na pasta `files/`.
